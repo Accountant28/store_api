@@ -12,8 +12,7 @@ app = Flask(__name__)
 
 app.config['DEBUG'] = True
 
-uri = os.getenv("postgres://gstldnehmiskmn:c35a96268da3277413433cf72844abc632af1fa5b4e94a52c8ae1ccbb56a6b7c@ec2-176-34-215-248.eu-west-1.compute.amazonaws.com:5432/dfd8pcf8djho5k")  # or other relevant config var
-print(uri)
+uri = os.getenv("DATABASE_URL")  # or other relevant config var
 if uri == None:
     uri = "postgresql://"
 else:
