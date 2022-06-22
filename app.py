@@ -15,9 +15,9 @@ app.config['DEBUG'] = True
 uri = os.getenv("DATABASE_BASE")  # or other relevant config var
 if uri == None:
     uri = "postgresql://"
-# else:
-#     # uri.startswith("postgres://"):
-#     uri = uri.replace("postgres://", "postgresql://", 1)
+else:
+    # uri.startswith("postgres://"):
+    uri = uri.replace("postgres://", "postgresql://", 1)
 # rest of connection code using the connection string `uri`
 print(uri)
 
