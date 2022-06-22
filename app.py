@@ -12,17 +12,11 @@ app = Flask(__name__)
 
 app.config['DEBUG'] = True
 
-uri = os.getenv("DATABASE_BASE")  # or other relevant config var
-if uri == None:
-    uri = "postgresql://"
-else:
-    # uri.startswith("postgres://"):
+uri = os.environ.get('DATABASE_URL', 'sqlite:///data.db')
+if uri.startswith('postgres://')
     uri = uri.replace("postgres://", "postgresql://", 1)
-# rest of connection code using the connection string `uri`
-print(uri)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(uri, 'sqlite:///data.db')
-print(os.environ.get(uri, 'sqlite:///data.db'))
+app.config['SQLALCHEMY_DATABASE_URI'] = uri
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = 'jose'
 api = Api(app)
